@@ -1,4 +1,4 @@
-package com.canwar.base.ui.theme
+package com.canwar.base.presentatsion.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

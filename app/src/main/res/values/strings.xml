@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">base</string>
     <string name="home_screen">Home Screen</string>
+    <string name="anime">Anime</string>
+    <string name="manga">Manga</string>
+    <string name="not_connected">⚠️ You aren’t connected to the internet</string>
 </resources>

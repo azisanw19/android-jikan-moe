@@ -1,44 +1,43 @@
 package com.canwar.base.presentatsion.compose
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
+import com.canwar.base.presentatsion.AppState
 import com.canwar.base.presentatsion.compose.home.HomeScreen
 import com.canwar.base.presentatsion.compose.profile.ProfileScreen
+import com.canwar.base.presentatsion.rememberAppState
 import com.canwar.networkMonitor.NetworkMonitor
 
 @Composable
 fun BaseApp(
     networkMonitor: NetworkMonitor,
+    appState: AppState = rememberAppState(
+        networkMonitor = networkMonitor,
+    )
 ) {
-    // Setup navigation Here
-    val navController = rememberNavController()
     BaseNavHost(
-        navController = navController,
+        appState = appState
     )
 }
 
 @Composable
 fun BaseNavHost(
-    navController: NavHostController,
+    appState: AppState
 ) {
     NavHost(
-        navController = navController,
+        navController = appState.navController,
         startDestination = "home",
     ) {
         composable(route = "home") {
             HomeScreen(
-                onButtonToProfileClicked = {
-                    navController.navigate("profile")
-                },
+                appState = appState,
             )
         }
 
         composable(route = "profile") {
             ProfileScreen(
-
+                appState = appState,
             )
         }
     }

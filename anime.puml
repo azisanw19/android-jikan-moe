@@ -1,0 +1,254 @@
+@startjson
+{
+  "pagination": {
+    "last_visible_page": 1036,
+    "has_next_page": true,
+    "current_page": 1,
+    "items": {
+      "count": 25,
+      "total": 25899,
+      "per_page": 25
+    }
+  },
+  "data": [
+    {
+      "mal_id": 1,
+      "url": "https://myanimelist.net/anime/1/Cowboy_Bebop",
+      "images": {
+        "jpg": {
+          "image_url": "https://cdn.myanimelist.net/images/anime/4/19644.jpg",
+          "small_image_url": "https://cdn.myanimelist.net/images/anime/4/19644t.jpg",
+          "large_image_url": "https://cdn.myanimelist.net/images/anime/4/19644l.jpg"
+        },
+        "webp": {
+          "image_url": "https://cdn.myanimelist.net/images/anime/4/19644.webp",
+          "small_image_url": "https://cdn.myanimelist.net/images/anime/4/19644t.webp",
+          "large_image_url": "https://cdn.myanimelist.net/images/anime/4/19644l.webp"
+        }
+      },
+      "trailer": {
+        "youtube_id": "gY5nDXOtv_o",
+        "url": "https://www.youtube.com/watch?v=gY5nDXOtv_o",
+        "embed_url": "https://www.youtube.com/embed/gY5nDXOtv_o?enablejsapi=1&wmode=opaque&autoplay=1",
+        "images": {
+          "image_url": "https://img.youtube.com/vi/gY5nDXOtv_o/default.jpg",
+          "small_image_url": "https://img.youtube.com/vi/gY5nDXOtv_o/sddefault.jpg",
+          "medium_image_url": "https://img.youtube.com/vi/gY5nDXOtv_o/mqdefault.jpg",
+          "large_image_url": "https://img.youtube.com/vi/gY5nDXOtv_o/hqdefault.jpg",
+          "maximum_image_url": "https://img.youtube.com/vi/gY5nDXOtv_o/maxresdefault.jpg"
+        }
+      },
+      "approved": true,
+      "titles": [
+        {
+          "type": "Default",
+          "title": "Cowboy Bebop"
+        },
+        {
+          "type": "Japanese",
+          "title": "カウボーイビバップ"
+        },
+        {
+          "type": "English",
+          "title": "Cowboy Bebop"
+        }
+      ],
+      "title": "Cowboy Bebop",
+      "title_english": "Cowboy Bebop",
+      "title_japanese": "カウボーイビバップ",
+      "title_synonyms": [],
+      "type": "TV",
+      "source": "Original",
+      "episodes": 26,
+      "status": "Finished Airing",
+      "airing": false,
+      "aired": {
+        "from": "1998-04-03T00:00:00+00:00",
+        "to": "1999-04-24T00:00:00+00:00",
+        "prop": {
+          "from": {
+            "day": 3,
+            "month": 4,
+            "year": 1998
+          },
+          "to": {
+            "day": 24,
+            "month": 4,
+            "year": 1999
+          }
+        },
+        "string": "Apr 3, 1998 to Apr 24, 1999"
+      },
+      "duration": "24 min per ep",
+      "rating": "R - 17+ (violence & profanity)",
+      "score": 8.75,
+      "scored_by": 943143,
+      "rank": 45,
+      "popularity": 43,
+      "members": 1825482,
+      "favorites": 80799,
+      "synopsis": "synopsis",
+      "season": "spring",
+      "year": 1998,
+      "broadcast": {
+        "day": "Saturdays",
+        "time": "01:00",
+        "timezone": "Asia/Tokyo",
+        "string": "Saturdays at 01:00 (JST)"
+      },
+      "producers": [
+        {
+          "mal_id": 23,
+          "type": "anime",
+          "name": "Bandai Visual",
+          "url": "https://myanimelist.net/anime/producer/23/Bandai_Visual"
+        }
+      ],
+      "licensors": [
+        {
+          "mal_id": 102,
+          "type": "anime",
+          "name": "Funimation",
+          "url": "https://myanimelist.net/anime/producer/102/Funimation"
+        }
+      ],
+      "studios": [
+        {
+          "mal_id": 14,
+          "type": "anime",
+          "name": "Sunrise",
+          "url": "https://myanimelist.net/anime/producer/14/Sunrise"
+        }
+      ],
+      "genres": [
+        {
+          "mal_id": 1,
+          "type": "anime",
+          "name": "Action",
+          "url": "https://myanimelist.net/anime/genre/1/Action"
+        },
+        {
+          "mal_id": 46,
+          "type": "anime",
+          "name": "Award Winning",
+          "url": "https://myanimelist.net/anime/genre/46/Award_Winning"
+        },
+        {
+          "mal_id": 24,
+          "type": "anime",
+          "name": "Sci-Fi",
+          "url": "https://myanimelist.net/anime/genre/24/Sci-Fi"
+        }
+      ],
+      "explicit_genres": [],
+      "themes": [
+        {
+          "mal_id": 50,
+          "type": "anime",
+          "name": "Adult Cast",
+          "url": "https://myanimelist.net/anime/genre/50/Adult_Cast"
+        },
+        {
+          "mal_id": 29,
+          "type": "anime",
+          "name": "Space",
+          "url": "https://myanimelist.net/anime/genre/29/Space"
+        }
+      ],
+      "demographics": []
+    }
+  ],
+  "links": {
+    "first": "http://api.jikan.moe/v4/anime?=1",
+    "last": "http://api.jikan.moe/v4/anime?=1036",
+    "prev": null,
+    "next": "http://api.jikan.moe/v4/anime?=2"
+  },
+  "meta": {
+    "current_page": 1,
+    "from": 1,
+    "last_page": 1036,
+    "links": [
+      {
+        "url": null,
+        "label": "pagination.previous",
+        "active": false
+      },
+      {
+        "url": "http://api.jikan.moe/v4/anime?=1",
+        "label": "1",
+        "active": true
+      },
+      {
+        "url": "http://api.jikan.moe/v4/anime?=2",
+        "label": "2",
+        "active": false
+      },
+      {
+        "url": "http://api.jikan.moe/v4/anime?=3",
+        "label": "3",
+        "active": false
+      },
+      {
+        "url": "http://api.jikan.moe/v4/anime?=4",
+        "label": "4",
+        "active": false
+      },
+      {
+        "url": "http://api.jikan.moe/v4/anime?=5",
+        "label": "5",
+        "active": false
+      },
+      {
+        "url": "http://api.jikan.moe/v4/anime?=6",
+        "label": "6",
+        "active": false
+      },
+      {
+        "url": "http://api.jikan.moe/v4/anime?=7",
+        "label": "7",
+        "active": false
+      },
+      {
+        "url": "http://api.jikan.moe/v4/anime?=8",
+        "label": "8",
+        "active": false
+      },
+      {
+        "url": "http://api.jikan.moe/v4/anime?=9",
+        "label": "9",
+        "active": false
+      },
+      {
+        "url": "http://api.jikan.moe/v4/anime?=10",
+        "label": "10",
+        "active": false
+      },
+      {
+        "url": null,
+        "label": "...",
+        "active": false
+      },
+      {
+        "url": "http://api.jikan.moe/v4/anime?=1035",
+        "label": "1035",
+        "active": false
+      },
+      {
+        "url": "http://api.jikan.moe/v4/anime?=1036",
+        "label": "1036",
+        "active": false
+      },
+      {
+        "url": "http://api.jikan.moe/v4/anime?=2",
+        "label": "pagination.next",
+        "active": false
+      }
+    ],
+    "path": "http://api.jikan.moe/v4/anime",
+    "per_page": 25,
+    "to": 25,
+    "total": 25899
+  }
+}
+@endjson

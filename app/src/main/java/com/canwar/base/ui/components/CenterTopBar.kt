@@ -1,4 +1,4 @@
-package com.canwar.base.presentatsion.components
+package com.canwar.base.ui.components
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.RowScope

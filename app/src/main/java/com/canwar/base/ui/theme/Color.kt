@@ -1,4 +1,4 @@
-package com.canwar.base.presentatsion.theme
+package com.canwar.base.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

@@ -1,12 +1,12 @@
-package com.canwar.base.presentatsion.compose
+package com.canwar.base.ui.compose
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.canwar.base.presentatsion.AppState
-import com.canwar.base.presentatsion.compose.home.HomeScreen
-import com.canwar.base.presentatsion.compose.profile.ProfileScreen
-import com.canwar.base.presentatsion.rememberAppState
+import com.canwar.base.ui.AppState
+import com.canwar.base.ui.compose.home.HomeScreen
+import com.canwar.base.ui.compose.profile.ProfileScreen
+import com.canwar.base.ui.rememberAppState
 import com.canwar.networkMonitor.NetworkMonitor
 
 @Composable

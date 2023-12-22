@@ -1,4 +1,4 @@
-package com.canwar.base.presentatsion.compose.home
+package com.canwar.base.ui.compose.home
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -36,8 +36,9 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.canwar.base.R
-import com.canwar.base.presentatsion.AppState
-import com.canwar.base.presentatsion.theme.BaseTheme
+import com.canwar.base.ui.AppState
+import com.canwar.base.ui.compose.anime.AnimePage
+import com.canwar.base.ui.theme.BaseTheme
 import com.canwar.base.utils.previews.ThemePreviews
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
@@ -108,7 +109,7 @@ fun HomeScreen(
                     ),
                 ),
         ) {
-
+            AnimePage()
         }
 
     }

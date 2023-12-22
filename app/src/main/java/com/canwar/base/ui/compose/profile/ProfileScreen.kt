@@ -1,4 +1,4 @@
-package com.canwar.base.presentatsion.compose.profile
+package com.canwar.base.ui.compose.profile
 
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.PaddingValues
@@ -16,7 +16,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.canwar.base.presentatsion.AppState
+import com.canwar.base.ui.AppState
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable

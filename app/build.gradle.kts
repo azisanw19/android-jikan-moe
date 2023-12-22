@@ -26,7 +26,7 @@ android {
         debug {
             /// Configure this to your own base url in debug
             /// for more safety, you can save the api key in local.properties
-            buildConfigField("String", "BASE_URL", "\"https://api.rawg.io/api/\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.jikan.moe/v4/\"")
             buildConfigField("String", "API_KEY", "\"10a79a5e331e40d48d9b7e470d0ff6c5\"")
         }
         release {
@@ -38,7 +38,7 @@ android {
 
             /// Configure this to your own base url in release
             /// for more safety, you can save the api key in local.properties
-            buildConfigField("String", "BASE_URL", "\"https://api.rawg.io/api/\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.jikan.moe/v4/\"")
             buildConfigField("String", "API_KEY", "\"10a79a5e331e40d48d9b7e470d0ff6c5\"")
         }
     }
@@ -113,4 +113,5 @@ dependencies {
     /* Dependency Injection Dagger Hilt */
     implementation("com.google.dagger:hilt-android:2.50")
     kapt("com.google.dagger:hilt-android-compiler:2.50")
+    implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
 }

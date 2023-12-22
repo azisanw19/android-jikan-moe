@@ -1,4 +1,4 @@
-package com.canwar.base.presentatsion
+package com.canwar.base.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember

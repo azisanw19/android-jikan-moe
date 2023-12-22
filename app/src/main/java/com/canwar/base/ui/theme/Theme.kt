@@ -1,4 +1,4 @@
-package com.canwar.base.presentatsion.theme
+package com.canwar.base.ui.theme
 
 import android.app.Activity
 import android.os.Build

@@ -2,7 +2,8 @@ package com.canwar.base.config.retrofitConfig
 
 import com.canwar.base.BuildConfig
 import com.canwar.base.config.Config
-import com.canwar.base.data.dataSource.ApiServiceAuthorization
+import com.canwar.base.dataSource.ApiService
+import com.canwar.base.dataSource.ApiServiceAuthorization
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -20,37 +21,49 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class RetrofitConfig {
-    @Provides
-    fun provideRequestInterceptor() = Interceptor { chain ->
+
+    fun provideRequestInterceptor(isUseAuthorization: Boolean) = Interceptor { chain ->
+        val config = Config()
+
         // use this to header api key
         // only for key in header
         val request = chain.request()
             .newBuilder()
             .addHeader("Accept", "application/json")
-//            .addHeader("key", API_KEY)
+            .addHeader("key", BuildConfig.API_KEY)
+
+        if (isUseAuthorization) {
+            // use this to header authorization
+            // only for key in header
+            request.addHeader("Authorization", "Bearer ${config.provideTokenAuthorization()}")
+        }
+
+
         return@Interceptor chain.proceed(request.build())
     }
 
-    @Provides
-    fun provideOkHttpClient(requestInterceptor: Interceptor) = if (BuildConfig.DEBUG) {
-        /* Enable logging in build debug */
+    fun provideOkHttpClient(isUseAuthorization: Boolean): OkHttpClient {
+        val requestInterceptor: Interceptor = provideRequestInterceptor(isUseAuthorization)
+        if (BuildConfig.DEBUG) {
+            /* Enable logging in build debug */
 
-        val loggingInterceptor = HttpLoggingInterceptor()
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.HEADERS)
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+            val loggingInterceptor = HttpLoggingInterceptor()
+            loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.HEADERS)
+            loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
 
-        OkHttpClient.Builder()
-            .connectTimeout(Config.NETWORK_TIMEOUT, TimeUnit.SECONDS)
-            .addInterceptor(requestInterceptor)
-            .addInterceptor(loggingInterceptor)
-            .build()
-    } else {
-        /* Disable Logging for Release */
+            return OkHttpClient.Builder()
+                .connectTimeout(Config.NETWORK_TIMEOUT, TimeUnit.SECONDS)
+                .addInterceptor(requestInterceptor)
+                .addInterceptor(loggingInterceptor)
+                .build()
+        } else {
+            /* Disable Logging for Release */
 
-        OkHttpClient.Builder()
-            .connectTimeout(Config.NETWORK_TIMEOUT, TimeUnit.SECONDS)
-            .addInterceptor(requestInterceptor)
-            .build()
+            return OkHttpClient.Builder()
+                .connectTimeout(Config.NETWORK_TIMEOUT, TimeUnit.SECONDS)
+                .addInterceptor(requestInterceptor)
+                .build()
+        }
     }
 
     @Provides
@@ -63,13 +76,31 @@ class RetrofitConfig {
 
     @Provides
     @Singleton
-    fun provideServiceWithoutAuthorization(gson: Gson, okHttpClient: OkHttpClient): ApiServiceAuthorization =
-        Retrofit.Builder()
+    fun provideServiceWithoutAuthorization(
+        gson: Gson,
+    ): ApiServiceAuthorization {
+        val okHttpClient: OkHttpClient = provideOkHttpClient(false)
+        return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ApiServiceAuthorization::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideServiceWithAuthorization(
+        gson: Gson
+    ): ApiService {
+        val okHttpClient: OkHttpClient = provideOkHttpClient(true)
+        return Retrofit.Builder()
+            .baseUrl(BuildConfig.BASE_URL)
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .build()
+            .create(ApiService::class.java)
+    }
 
 
 }

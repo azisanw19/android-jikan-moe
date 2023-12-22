@@ -1,11 +1,11 @@
-package com.canwar.base.presentatsion
+package com.canwar.base.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.core.view.WindowCompat
-import com.canwar.base.presentatsion.compose.BaseApp
-import com.canwar.base.presentatsion.theme.BaseTheme
+import com.canwar.base.ui.compose.BaseApp
+import com.canwar.base.ui.theme.BaseTheme
 import com.canwar.networkMonitor.NetworkManager
 import com.canwar.networkMonitor.NetworkMonitor
 import dagger.hilt.android.AndroidEntryPoint

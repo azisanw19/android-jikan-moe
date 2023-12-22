@@ -29,12 +29,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.canwar.base.R
 import com.canwar.base.presentatsion.AppState
 import com.canwar.base.presentatsion.theme.BaseTheme
@@ -44,21 +44,12 @@ import com.canwar.base.utils.previews.ThemePreviews
 @Composable
 fun HomeScreen(
     appState: AppState,
-    homeViewModel: HomeViewModel = viewModel(),
 ) {
 
     val snackBarHostState = remember { SnackbarHostState() }
-    val homeState by homeViewModel.homeState.collectAsStateWithLifecycle()
     val isOffline by appState.isOffline.collectAsStateWithLifecycle()
-
-    when (homeState) {
-        is HomeState.NavigateTo -> {
-
-        }
-
-        else -> {
-
-        }
+    val stateHomeScreenDestinations = remember {
+        mutableStateOf(HomeScreenDestinations.Anime)
     }
 
     // If user is not connected to the internet show a snack bar to inform them.
@@ -74,7 +65,19 @@ fun HomeScreen(
 
     Scaffold(
         topBar = {
-            HomeScreenTopBar()
+            if (stateHomeScreenDestinations.value == HomeScreenDestinations.Anime) {
+                HomeScreenTopBar(
+                    title = {
+                        Text(text = stringResource(id = R.string.anime))
+                    }
+                )
+            } else if (stateHomeScreenDestinations.value == HomeScreenDestinations.Manga) {
+                HomeScreenTopBar(
+                    title = {
+                        Text(text = stringResource(id = R.string.manga))
+                    }
+                )
+            }
         },
         snackbarHost = {
             SnackbarHost(
@@ -88,12 +91,9 @@ fun HomeScreen(
                     HomeScreenDestinations.Manga,
                 ),
                 onClick = { homeScreenDestinations ->
-                    homeViewModel.setActionEvent(
-                        HomeEvent.NavigateTo(
-                            homeScreenDestinations = homeScreenDestinations
-                        )
-                    )
-                }
+                    stateHomeScreenDestinations.value = homeScreenDestinations
+                },
+                selectedDestinations = stateHomeScreenDestinations.value,
             )
         }
     ) { paddingValues: PaddingValues ->
@@ -109,7 +109,6 @@ fun HomeScreen(
                 ),
         ) {
 
-
         }
 
     }
@@ -120,12 +119,11 @@ fun HomeScreen(
 @Composable
 fun HomeScreenTopBar(
     modifier: Modifier = Modifier,
+    title: @Composable () -> Unit = {},
 ) {
     CenterAlignedTopAppBar(
         modifier = modifier,
-        title = {
-            Text(text = stringResource(id = R.string.home_screen))
-        }
+        title = title
     )
 }
 
@@ -154,13 +152,14 @@ fun HomeBottomNavigationBar(
     destinations: List<HomeScreenDestinations>,
     modifier: Modifier = Modifier,
     onClick: (homeScreenDestinations: HomeScreenDestinations) -> Unit,
+    selectedDestinations: HomeScreenDestinations
 ) {
     NavigationBar(
         modifier = modifier,
     ) {
         destinations.forEach { homeScreenDestinations ->
             NavigationBarItem(
-                selected = false,
+                selected = selectedDestinations == homeScreenDestinations,
                 onClick = {
                     onClick(homeScreenDestinations)
                 },
@@ -189,6 +188,7 @@ fun PreviewHomeBottomNavigationBar() {
                 HomeScreenDestinations.Manga,
             ),
             onClick = {},
+            selectedDestinations = HomeScreenDestinations.Anime,
         )
     }
 }

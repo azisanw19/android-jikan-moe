@@ -8,7 +8,9 @@ import com.canwar.base.presentatsion.compose.BaseApp
 import com.canwar.base.presentatsion.theme.BaseTheme
 import com.canwar.networkMonitor.NetworkManager
 import com.canwar.networkMonitor.NetworkMonitor
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private val networkMonitor: NetworkMonitor by lazy {
         NetworkManager(context = this)

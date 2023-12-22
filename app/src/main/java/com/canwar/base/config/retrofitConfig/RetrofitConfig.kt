@@ -22,21 +22,12 @@ import javax.inject.Singleton
 class RetrofitConfig {
     @Provides
     fun provideRequestInterceptor() = Interceptor { chain ->
-        // Use this to api key in get request
-        // only for key in query parameter
-        val url = chain.request()
-            .url
-            .newBuilder()
-            .addQueryParameter("key", BuildConfig.API_KEY)
-            .build()
-
         // use this to header api key
         // only for key in header
         val request = chain.request()
             .newBuilder()
             .addHeader("Accept", "application/json")
 //            .addHeader("key", API_KEY)
-//            .url(url)
         return@Interceptor chain.proceed(request.build())
     }
 

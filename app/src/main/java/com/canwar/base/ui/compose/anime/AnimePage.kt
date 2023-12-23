@@ -7,9 +7,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.canwar.base.ui.AppState
 
 @Composable
 fun AnimePage(
+    appState: AppState,
     animeViewModel: AnimeViewModel = hiltViewModel()
 ) {
     animeViewModel.getAnime()

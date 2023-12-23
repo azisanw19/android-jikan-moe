@@ -8,13 +8,14 @@ import com.canwar.base.utils.state.DataState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-class AnimeRepositoryImpl constructor(
+class AnimeRepositoryImpl(
     private val apiService: ApiService
 ) : BaseRepository(), AnimeRepository {
 
-    override suspend fun getAnimeSearch(): Flow<DataState<List<Anime>?>> = getStateOf(
-        response = apiService.getAnimeSearch()
-    ).map {
+    override suspend fun getAnimeSearch(): Flow<DataState<List<Anime>?>> = getStateOf {
+        apiService.getAnimeSearch()
+    }
+    .map {
         // it's like you change the data from the api
         // and you can change the data to another data
         // example: change data to another data

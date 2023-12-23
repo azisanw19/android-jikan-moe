@@ -109,7 +109,9 @@ fun HomeScreen(
                     ),
                 ),
         ) {
-            AnimePage()
+            AnimePage(
+                appState = appState,
+            )
         }
 
     }

@@ -78,22 +78,8 @@ class RetrofitConfig {
     @Singleton
     fun provideServiceWithoutAuthorization(
         gson: Gson,
-    ): ApiServiceAuthorization {
-        val okHttpClient: OkHttpClient = provideOkHttpClient(false)
-        return Retrofit.Builder()
-            .baseUrl(BuildConfig.BASE_URL)
-            .client(okHttpClient)
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .build()
-            .create(ApiServiceAuthorization::class.java)
-    }
-
-    @Provides
-    @Singleton
-    fun provideServiceWithAuthorization(
-        gson: Gson
     ): ApiService {
-        val okHttpClient: OkHttpClient = provideOkHttpClient(true)
+        val okHttpClient: OkHttpClient = provideOkHttpClient(false)
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
@@ -102,5 +88,18 @@ class RetrofitConfig {
             .create(ApiService::class.java)
     }
 
+    @Provides
+    @Singleton
+    fun provideServiceWithAuthorization(
+        gson: Gson
+    ): ApiServiceAuthorization {
+        val okHttpClient: OkHttpClient = provideOkHttpClient(true)
+        return Retrofit.Builder()
+            .baseUrl(BuildConfig.BASE_URL)
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .build()
+            .create(ApiServiceAuthorization::class.java)
+    }
 
 }

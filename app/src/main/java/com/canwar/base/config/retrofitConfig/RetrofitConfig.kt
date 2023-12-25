@@ -23,8 +23,6 @@ import javax.inject.Singleton
 class RetrofitConfig {
 
     fun provideRequestInterceptor(isUseAuthorization: Boolean) = Interceptor { chain ->
-        val config = Config()
-
         // use this to header api key
         // only for key in header
         val request = chain.request()
@@ -35,7 +33,7 @@ class RetrofitConfig {
         if (isUseAuthorization) {
             // use this to header authorization
             // only for key in header
-            request.addHeader("Authorization", "Bearer ${config.provideTokenAuthorization()}")
+            request.addHeader("Authorization", "Bearer ${Config.provideTokenAuthorization()}")
         }
 
 

@@ -1,10 +1,8 @@
 package com.canwar.base.config
 
-class Config {
+object Config {
 
-    companion object {
-        const val NETWORK_TIMEOUT = 30L
-    }
+    const val NETWORK_TIMEOUT = 30L
 
     fun provideTokenAuthorization(): String {
         return ""

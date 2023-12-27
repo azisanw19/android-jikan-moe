@@ -109,9 +109,13 @@ fun HomeScreen(
                     ),
                 ),
         ) {
-            AnimePage(
-                appState = appState,
-            )
+            if (stateHomeScreenDestinations.value == HomeScreenDestinations.Anime) {
+                AnimePage(
+                    appState = appState,
+                )
+            } else if (stateHomeScreenDestinations.value == HomeScreenDestinations.Manga) {
+                Text(text = stringResource(id = R.string.manga))
+            }
         }
 
     }

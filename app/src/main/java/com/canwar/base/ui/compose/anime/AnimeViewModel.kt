@@ -39,7 +39,10 @@ class AnimeViewModel @Inject constructor(
             animeRepository.getAnimeSearch().collect {
                 Log.d("AnimeViewModel", "getAnime: $it")
                 when (it) {
-                    is DataState.Loading -> _isLoading.emit(true)
+                    is DataState.Loading -> {
+                        Log.d("isLoading", "isLoadingAnimeViewModel: $it")
+                        _isLoading.emit(true)
+                    }
                     is DataState.Error -> {
                         _isLoading.emit(false)
                         _errorMessage.emit(it.exception.message ?: "")

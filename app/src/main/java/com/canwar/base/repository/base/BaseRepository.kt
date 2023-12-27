@@ -14,6 +14,7 @@ abstract class BaseRepository {
             emit(DataState.Success(response.body()))
         } else {
             // handle error
+            // code 400, 500, etc
             emit(DataState.Error(Exception()))
         }
     }

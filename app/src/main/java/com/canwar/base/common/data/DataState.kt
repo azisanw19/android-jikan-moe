@@ -1,4 +1,4 @@
-package com.canwar.base.utils.data
+package com.canwar.base.common.data
 
 sealed class DataState<out T> {
     data class Success<out T>(val data: T) : DataState<T>()

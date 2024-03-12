@@ -1,24 +1,29 @@
 package com.canwar.base.core.data
 
-import com.canwar.base.utils.data.DataState
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
+import com.canwar.base.common.data.DataState
+import com.canwar.base.common.util.DispatcherProvider
+import kotlinx.coroutines.withContext
 import retrofit2.Response
 
-abstract class BaseRepository {
+abstract class BaseRepository(
+    private val dispatcherProvider: DispatcherProvider,
+) {
 
-    protected fun <T> getStateOf(responseFunction: suspend () -> Response<T>) : Flow<DataState<T?>> = flow {
-        try {
-            val response = responseFunction()
-            if (response.isSuccessful) {
-                emit(DataState.Success(response.body()))
-            } else {
-                emit(DataState.Error(response.message()))
+    protected suspend fun <T, R> getStateOf(
+        response: suspend () -> Response<T>,
+        success: (result: T) -> DataState<R>,
+    ): DataState<R> =
+        withContext(dispatcherProvider.io) {
+            try {
+                val result = response()
+                if (result.isSuccessful) {
+                    success(result.body()!!)
+                } else {
+                    DataState.Error(result.message())
+                }
+            } catch (e: Exception) {
+                // handle exception
+                DataState.Error(e.message ?: "Something went wrong! Please try again later.")
             }
-        } catch (e: Exception) {
-            // handle exception
-            emit(DataState.Error(e.message ?: "Something went wrong! Please try again later."))
         }
-    }
-
 }

@@ -1,4 +1,4 @@
-package com.canwar.base.utils.previews
+package com.canwar.base.common.presentation
 
 import android.content.res.Configuration
 import androidx.compose.ui.tooling.preview.Preview

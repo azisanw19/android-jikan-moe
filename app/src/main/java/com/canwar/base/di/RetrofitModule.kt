@@ -28,7 +28,7 @@ class RetrofitModule {
         val request = chain.request()
             .newBuilder()
             .addHeader("Accept", "application/json")
-            .addHeader("key", BuildConfig.API_KEY)
+            .addHeader("key", Config.API_KEY)
 
         return@Interceptor chain.proceed(request.build())
     }
